@@ -1,0 +1,17 @@
+[package]
+name = "rusty_blank"
+version = "0.1.0"
+authors = ["Mark Lee"]
+
+[lib]
+crate-type = ["dylib"]
+
+[features]
+
+lint = ["clippy"]
+
+[dependencies]
+
+ruru = "0.5"
+
+clippy = { version = "*", optional = true }
