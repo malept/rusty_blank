@@ -12,6 +12,6 @@ lint = ["clippy"]
 
 [dependencies]
 
-ruru = "0.5"
+ruru = "0.6"
 
 clippy = { version = "*", optional = true }
