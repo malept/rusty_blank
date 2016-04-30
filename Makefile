@@ -14,4 +14,4 @@ clean:
 $(LIBRARY):
 	$(CARGO) build $(if $(filter release,$(TARGET)),--release)
 
-.PHONY: build clean deb test
+.PHONY: build clean test
