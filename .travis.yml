@@ -1,0 +1,26 @@
+sudo: false
+language: rust
+
+os:
+  - linux
+  - osx
+
+cache:
+  cargo: true
+
+rust:
+  - stable
+
+before_install:
+  - rvm install 2.3.1
+
+# load travis-cargo
+before_script:
+  - |
+      pip install 'travis-cargo<0.2' --user &&
+      export PATH=$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$PATH
+
+# the main build
+script:
+  - travis-cargo build
+  - make test TARGET=debug
