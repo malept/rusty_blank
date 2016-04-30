@@ -24,3 +24,4 @@ before_script:
 script:
   - travis-cargo build
   - make test TARGET=debug
+  - gem build rusty_blank.gemspec
