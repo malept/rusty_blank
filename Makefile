@@ -1,7 +1,5 @@
 CARGO ?= cargo
-TMPDIR := $(shell mktemp -d)
-CURDIR := $(shell pwd)
-LIBEXT := $(shell ruby -e "require 'rbconfig'; puts RbConfig::CONFIG['DLEXT']")
+LIBEXT := $(shell ruby -e "require 'rbconfig'; dlext = RbConfig::CONFIG['DLEXT'] puts dlext == 'bundle' ? 'dylib' : dlext")
 TARGET ?= release
 LIBRARY = target/$(TARGET)/librusty_blank.$(LIBEXT)
 
