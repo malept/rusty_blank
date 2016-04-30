@@ -9,7 +9,7 @@ test: build
 build: $(LIBRARY)
 
 clean:
-	rm -rf target
+	$(CARGO) clean
 
 $(LIBRARY):
 	$(CARGO) build $(if $(filter release,$(TARGET)),--release)
