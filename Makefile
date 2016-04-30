@@ -1,5 +1,5 @@
 CARGO ?= cargo
-LIBEXT := $(shell ruby -e "require 'rbconfig'; dlext = RbConfig::CONFIG['DLEXT'] puts dlext == 'bundle' ? 'dylib' : dlext")
+LIBEXT := $(shell ruby -e "require 'rbconfig'; dlext = RbConfig::CONFIG['DLEXT']; puts dlext == 'bundle' ? 'dylib' : dlext")
 TARGET ?= release
 LIBRARY = target/$(TARGET)/librusty_blank.$(LIBEXT)
 
