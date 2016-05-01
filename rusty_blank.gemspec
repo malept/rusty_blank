@@ -15,4 +15,6 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split($OUTPUT_RECORD_SEPARATOR)
   s.require_paths = %w(lib)
   s.test_files    = %w(test.rb)
+
+  s.add_runtime_dependency 'rake'
 end
