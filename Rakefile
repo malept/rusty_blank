@@ -1,6 +1,11 @@
 require 'mkmf'
+require 'net/http'
 require 'rbconfig'
+require 'rexml/document'
+require 'rubygems/package'
 require 'tomlrb'
+require 'uri'
+require 'zlib'
 
 RUSTY_BLANK_EXT = (RbConfig::CONFIG['DLEXT'] == 'bundle' ? 'dylib' : RbConfig::CONFIG['DLEXT']).freeze
 
@@ -14,13 +19,42 @@ task :rust_shared_library do
     sh "#{cargo} build#{' --release' if target == 'release'}"
     sh "cp target/#{target}/librusty_blank.#{RUSTY_BLANK_EXT} lib/"
   else
-    # TODO: Download binary from GitHub, if one exists
-    fail <<EOM
+    installed_binary = false
+    name = 'rusty_blank'
+    os = RbConfig::CONFIG['target_os']
+    releases_uri = URI("https://github.com/malept/#{name}/releases.atom")
+    feed = REXML::Document.new(Net::HTTP.get(releases_uri))
+    REXML::XPath.each(feed, '//entry/title[contains(.,"-rust")]/text()') do |tag|
+      version = tag.to_s.slice(1..-6)
+      download_uri = URI("https://github.com/malept/#{name}/releases/download/#{tag}/#{name}-#{version}-#{os}.tar.gz")
+      case (response = Net::HTTP.get_response(download_uri))
+      when Net::HTTPClientError
+        next
+      when Net::HTTPServerError
+        raise response
+      else
+        puts "Downloading latest compiled version (#{version}) from GitHub"
+        tgz = StringIO.new(Net::HTTP.get(URI(response['location'])))
+        gz = Zlib::GzipReader.new(tgz)
+        tar = Gem::Package::TarReader.new(gz)
+        tar.each do |entry|
+          next if entry.header.name.end_with?('/')
+          File.open(entry.header.name, 'wb') do |f|
+            f.write(entry.read)
+          end
+        end
+        installed_binary = true
+        break
+      end
+    end
+    unless installed_binary
+      fail <<EOM
 ****
 Rust's Cargo is required to build this extension. Please install Rust and put
 it in the PATH, or set the CARGO environment variable appropriately.
 ****
 EOM
+    end
   end
 end
 
