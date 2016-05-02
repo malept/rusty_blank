@@ -1,9 +1,9 @@
+.bundle
 mkmf.log
 target
-*.deb
 *.dll
 *.dylib
 *.gem
 *.lock
-*.rpm
 *.so
+*.tar.gz
