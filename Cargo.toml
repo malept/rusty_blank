@@ -1,6 +1,6 @@
 [package]
 name = "rusty_blank"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Mark Lee"]
 
 [lib]
