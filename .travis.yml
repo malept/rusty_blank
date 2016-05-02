@@ -34,3 +34,4 @@ deploy:
   on:
     condition: ${TRAVIS_TAG} =~ '-rust'
     repo: malept/rusty_blank
+    tags: true
