@@ -30,6 +30,7 @@ deploy:
   api_key:
     secure: GZFo4A2iPwQsT10C9Ge4CXHR/2z6/NPUODUuZr1FEgfCaqbrfk6r5l73JICBsuY1ZOgIxvy0sSCz6/npszwgZ022JacSqWuHjqJ9VbUQ6plmc+XY+pv6nAOFPCZ/MbmCMLD7pCUS0CvExzSIum0mh4iHhviBpz89MIQOlI9qt+rz2uqq0q6MbfImwQ0heywyYAdvn1/03odsV9/brbV8mDOszUboPPLJMok5IR/9kJfFd3aJkfMXWJQmnShwCsuTohS48JTE+Uwl2nXjAzgwwJQlRE/7YMQc9P4vS7iSm+uKRKepPz50sXiel9CsgzgYs5Gr8aqmp4n7oAHiXwTo7VrjI2uF6nynuTowChmT9pzX83+4NoKTsneW7kBZToVWvrpmzUfRZQsJLv2uVHh2cG6PWf+PhLFnrtiPPLA32Nq3e6P7moFVQy6rxHEMwLdj6iturBSY5qaaTOsoVT28TJMmvfMTka/Jg+JU1QLOzaWUn74wAOThzyvdT6yQ6gu74UK9Wa8JDYYMTlXqUWCaZp2r/4/fbyfVyRbNIAbq4zAKHD6uQxOub7UyHooZKh4YP91IDO0BTiJX5SJvSVqwXd69MsI1K5TxujuzJPmZWMmk/sm/KapwGqol6E2UMcrGxLviP42Ecxx58rjxfr3quD46zf3OmgVbBWxs0kDtKsk=
   file: rusty_blank-*.tar.gz
+  file_glob: true
   skip_cleanup: true
   on:
     condition: ${TRAVIS_TAG} =~ '-rust'
