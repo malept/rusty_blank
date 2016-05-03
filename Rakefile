@@ -22,11 +22,12 @@ task :rust_shared_library do
     installed_binary = false
     name = 'rusty_blank'
     os = RbConfig::CONFIG['target_os']
+    arch = RbConfig::CONFIG['target_arch']
     releases_uri = URI("https://github.com/malept/#{name}/releases.atom")
     feed = REXML::Document.new(Net::HTTP.get(releases_uri))
     REXML::XPath.each(feed, '//entry/title[contains(.,"-rust")]/text()') do |tag|
       version = tag.to_s.slice(1..-6)
-      download_uri = URI("https://github.com/malept/#{name}/releases/download/#{tag}/#{name}-#{version}-#{os}.tar.gz")
+      download_uri = URI("https://github.com/malept/#{name}/releases/download/#{tag}/#{name}-#{version}-#{os}-#{arch}.tar.gz")
       case (response = Net::HTTP.get_response(download_uri))
       when Net::HTTPClientError
         next
@@ -77,5 +78,6 @@ task package_tarball: [:rust_shared_library] do
   name = toml[:package][:name]
   version = toml[:package][:version]
   os = RbConfig::CONFIG['target_os']
-  sh "fpm -s dir -t tar --name '#{name}' --package '#{name}-#{version}-#{os}.tar.gz' lib/librusty_blank.#{RUSTY_BLANK_EXT}"
+  arch = RbConfig::CONFIG['target_arch']
+  sh "fpm -s dir -t tar --name '#{name}' --package '#{name}-#{version}-#{os}-#{arch}.tar.gz' lib/librusty_blank.#{RUSTY_BLANK_EXT}"
 end
