@@ -22,7 +22,7 @@ task :rust_shared_library do
     installed_binary = false
     name = 'rusty_blank'
     os = RbConfig::CONFIG['target_os']
-    arch = RbConfig::CONFIG['target_arch']
+    arch = RbConfig::CONFIG['target_cpu']
     releases_uri = URI("https://github.com/malept/#{name}/releases.atom")
     feed = REXML::Document.new(Net::HTTP.get(releases_uri))
     REXML::XPath.each(feed, '//entry/title[contains(.,"-rust")]/text()') do |tag|
@@ -78,6 +78,6 @@ task package_tarball: [:rust_shared_library] do
   name = toml[:package][:name]
   version = toml[:package][:version]
   os = RbConfig::CONFIG['target_os']
-  arch = RbConfig::CONFIG['target_arch']
+  arch = RbConfig::CONFIG['target_cpu']
   sh "fpm -s dir -t tar --name '#{name}' --package '#{name}-#{version}-#{os}-#{arch}.tar.gz' lib/librusty_blank.#{RUSTY_BLANK_EXT}"
 end
