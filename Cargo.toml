@@ -6,12 +6,6 @@ authors = ["Mark Lee"]
 [lib]
 crate-type = ["dylib"]
 
-[features]
-
-lint = ["clippy"]
-
 [dependencies]
 
 ruru = "0.7"
-
-clippy = { version = "*", optional = true }
