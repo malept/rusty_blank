@@ -6,17 +6,21 @@ os:
 osx_image: xcode7.3
 rust:
 - stable
+env:
+  global:
+  - RUBY_VERSION: 2.3.1
 
 cache:
   bundler: true
   cargo: true
 
 before_install:
-- rvm use 2.3.1
+-  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use $RUBY_VERSION; else rvm install $RUBY_VERSION; fi
 - bundle install
 
 before_script:
 - |
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install python; fi
   pip install 'travis-cargo<0.2' --user &&
   export PATH=$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$PATH
 
