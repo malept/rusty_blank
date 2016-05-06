@@ -11,8 +11,8 @@ env:
   - RUBY_VERSION: 2.3.1
 
 cache:
-  bundler: true
-  cargo: true
+- bundler: true
+- cargo: true
 
 before_install:
 -  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use $RUBY_VERSION; else rvm install $RUBY_VERSION; fi
