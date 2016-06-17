@@ -3,7 +3,7 @@ require 'English'
 
 Gem::Specification.new do |s|
   s.name        = 'rusty_blank'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.summary     = 'Rust String.blank?'
   s.description = 'String.blank? from ActiveSupport, written in Rust'
 
@@ -17,8 +17,6 @@ Gem::Specification.new do |s|
   s.require_paths = %w(lib)
   s.test_files    = %w(test.rb)
 
-  s.add_runtime_dependency 'rake', '~> 11'
-  s.add_development_dependency 'fpm', '~> 1.5.0'
+  s.add_runtime_dependency 'thermite', '~> 0'
   s.add_development_dependency 'minitest', '~> 5.8'
-  s.add_development_dependency 'tomlrb', '~> 1.2.1'
 end
