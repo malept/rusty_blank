@@ -26,9 +26,9 @@ before_script:
 
 script:
 - travis-cargo build
-- rake test
+- bundle exec rake test
 - gem build rusty_blank.gemspec
-- rake package_tarball
+- bundle exec rake package_tarball
 
 deploy:
   provider: releases
