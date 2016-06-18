@@ -28,7 +28,7 @@ script:
 - travis-cargo build
 - bundle exec rake test
 - gem build rusty_blank.gemspec
-- bundle exec rake package_tarball
+- bundle exec rake thermite:tarball
 
 deploy:
   provider: releases
