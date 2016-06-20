@@ -8,7 +8,7 @@ rust:
 - stable
 env:
   global:
-  - RUBY_VERSION: 2.3.0
+  - RUBY_VERSION: 2.2.4
 
 cache:
 - bundler: true
