@@ -8,4 +8,4 @@ crate-type = ["dylib"]
 
 [dependencies]
 
-ruru = "0.7"
+ruru = { git = "https://github.com/malept/ruru", branch = "cast-num2int-value" }
