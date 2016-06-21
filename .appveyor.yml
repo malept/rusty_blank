@@ -20,16 +20,17 @@ install:
   - ps: |
         $env:PATH += ";C:\rust\bin";
         if ($env:platform -eq 'x86') {
-          $env:PATH = "C:\Ruby23\bin;${env:PATH}";
+          $env:RUBY_DIR = "Ruby23"
           $arch_expanded = "i686-pc-windows-${env:TARGET}";
           $env:ARCH = "x86";
           $env:bits = "32";
         } else {
-          $env:PATH = "C:\Ruby23-x64\bin;${env:PATH}";
+          $env:RUBY_DIR = "Ruby23-x64"
           $arch_expanded = "x86_64-pc-windows-${env:TARGET}";
           $env:ARCH = "amd64";
           $env:bits ="64";
         }
+        $env:PATH = "C:\${env:RUBY_DIR}\bin;${env:PATH}";
         if ($env:TARGET -eq 'gnu') {
           $env:PATH += ";C:\msys64\mingw${env:bits}\bin";
           gcc --version;
@@ -52,6 +53,7 @@ install:
   - curl --show-error --location --retry 5 --output rust-installer.exe https://static.rust-lang.org/dist/%rust_installer%
   - .\rust-installer.exe /VERYSILENT /NORESTART /DIR="C:\rust"
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
+  - call C:\%RUBY_DIR%\DevKit\devkitvars.bat
   - rustc -vV
   - cargo -vV
   - ruby --version
