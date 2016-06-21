@@ -20,12 +20,12 @@ install:
   - ps: |
         $env:PATH += ";C:\rust\bin";
         if ($env:platform -eq 'x86') {
-          $env:PATH = "C:\Ruby22\bin;${env:PATH}";
+          $env:PATH = "C:\Ruby23\bin;${env:PATH}";
           $arch_expanded = "i686-pc-windows-${env:TARGET}";
           $env:ARCH = "x86";
           $env:bits = "32";
         } else {
-          $env:PATH = "C:\Ruby22-x64\bin;${env:PATH}";
+          $env:PATH = "C:\Ruby23-x64\bin;${env:PATH}";
           $arch_expanded = "x86_64-pc-windows-${env:TARGET}";
           $env:ARCH = "amd64";
           $env:bits ="64";
