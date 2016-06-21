@@ -4,13 +4,7 @@ platform:
 environment:
   matrix:
     - RUST_VERSION: stable
-      TARGET: msvc
-    - RUST_VERSION: stable
       TARGET: gnu
-matrix:
-  allow_failures:
-    - TARGET: msvc
-      platform: x86
 cache:
   - target\debug\build
   - target\debug\deps
@@ -53,7 +47,6 @@ install:
   - curl --show-error --location --retry 5 --output rust-installer.exe https://static.rust-lang.org/dist/%rust_installer%
   - .\rust-installer.exe /VERYSILENT /NORESTART /DIR="C:\rust"
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
-  - call C:\%RUBY_DIR%\DevKit\devkitvars.bat
   - rustc -vV
   - cargo -vV
   - ruby --version
