@@ -6,5 +6,5 @@ task default: %w(thermite:build)
 
 desc 'Run testsuite'
 task test: %w(thermite:build thermite:test) do
-  ruby "test.rb lib/#{thermite.shared_library}"
+  ruby "test.rb lib/#{thermite.config.shared_library}"
 end
