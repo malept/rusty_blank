@@ -8,7 +8,6 @@ environment:
 cache:
   - target\debug\build
   - target\debug\deps
-  - vendor\bundle
   - '%USERPROFILE%\.cargo'
 install:
   - ps: |
