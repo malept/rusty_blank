@@ -20,9 +20,12 @@ before_install:
 
 before_script:
 - |
-  if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! which pip > /dev/null; then brew update && brew install python; fi
-  pip install 'travis-cargo<0.2' --user &&
   export PATH=$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$PATH
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! which pip > /dev/null; then
+    wget https://bootstrap.pypa.io/get-pip.py
+    python get-pip.py --user
+  fi
+  pip install 'travis-cargo<0.2' --user
 
 script:
 - travis-cargo build
