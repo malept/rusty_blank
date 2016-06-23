@@ -65,7 +65,7 @@ artifacts:
   - path: rusty_blank-*.tar.gz
 deploy:
   - provider: GitHub
-    artifact: rusty_blank-*.tar.gz
+    artifact: /rusty_blank-.*\.tar\.gz/
     draft: false
     prerelease: false
     auth_token:
