@@ -2,6 +2,7 @@
 name = "rusty_blank"
 version = "0.1.5"
 authors = ["Mark Lee"]
+repository = "https://github.com/malept/rusty_blank"
 
 [lib]
 crate-type = ["dylib"]
