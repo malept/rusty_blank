@@ -70,5 +70,8 @@ deploy:
     artifact: rusty_blank-*.tar.gz
     draft: false
     prerelease: false
+    auth_token:
+      secure: VUF+Nfn07Dym0IlQHG3NO6SdHMa1uG8IVzRY+beMUPR49b6M5mTvpPTm3OWO40G7
     on:
       appveyor_repo_tag: true
+      RUST_TAG: 1
