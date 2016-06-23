@@ -1,6 +1,6 @@
 [package]
 name = "rusty_blank"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["Mark Lee"]
 repository = "https://github.com/malept/rusty_blank"
 
