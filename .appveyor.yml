@@ -43,6 +43,10 @@ install:
         } else {
           $env:rust_installer = "rust-${env:RUST_VERSION}-${arch_expanded}.exe";
         }
+        $tag_suffix = echo "${env:APPVEYOR_REPO_TAG_NAME}" | Select-String -pattern "-rust$"
+        if ($tag_suffix) {
+          $env:RUST_TAG = "1";
+        }
   - curl --show-error --location --retry 5 --output rust-installer.exe https://static.rust-lang.org/dist/%rust_installer%
   - .\rust-installer.exe /VERYSILENT /NORESTART /DIR="C:\rust"
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
@@ -59,12 +63,6 @@ test_script:
   - bundle exec rake test
 artifacts:
   - path: rusty_blank-*.tar.gz
-before_deploy:
-  - ps: |
-        $tag_suffix = echo "${env:APPVEYOR_REPO_TAG_NAME}" | Select-String -pattern "-rust$"
-        if ($tag_suffix) {
-          $env:RUST_TAG = "1";
-        }
 deploy:
   - provider: GitHub
     artifact: rusty_blank-*.tar.gz
