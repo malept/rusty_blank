@@ -1,6 +1,6 @@
 require 'thermite/tasks'
 
-thermite = Thermite::Tasks.new(github_releases: true)
+thermite = Thermite::Tasks.new
 
 task default: %w(thermite:build)
 
