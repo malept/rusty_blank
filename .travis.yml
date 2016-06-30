@@ -34,6 +34,7 @@ script:
 - bundle exec rake test
 - bundle exec rake thermite:tarball
 - bundle exec rake install
+- CARGO=fake bundle exec rake install
 
 deploy:
   provider: releases
