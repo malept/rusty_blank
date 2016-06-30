@@ -8,7 +8,6 @@ rust:
 - stable
 env:
   matrix:
-  - RBLANK_RUBY_VERSION: 2.1.10
   - RBLANK_RUBY_VERSION: 2.2.5
   - RBLANK_RUBY_VERSION: 2.3.1
 
