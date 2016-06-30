@@ -5,6 +5,11 @@ version = "0.1.8"
 authors = ["Mark Lee"]
 repository = "https://github.com/malept/rusty_blank"
 
+[package.metadata.thermite]
+
+github_releases = true
+git_tag_format = "^v(\\d+\\.\\d+\\.\\d+)-rust$"
+
 [lib]
 
 crate-type = ["dylib"]
@@ -12,8 +17,3 @@ crate-type = ["dylib"]
 [dependencies]
 
 ruru = { git = "https://github.com/malept/ruru", branch = "windows-compatible" }
-
-[package.metadata.thermite]
-
-github_releases = true
-git_tag_format = "^v(\\d+\\.\\d+\\.\\d+)-rust$"
