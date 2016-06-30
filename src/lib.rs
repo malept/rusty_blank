@@ -1,8 +1,7 @@
 #[macro_use]
 extern crate ruru;
 
-use ruru::{AnyObject, Boolean, Class, RString, VM};
-use ruru::types::Argc;
+use ruru::{Boolean, Class, RString};
 
 methods!(
     RString,

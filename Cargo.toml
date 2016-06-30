@@ -16,4 +16,4 @@ crate-type = ["dylib"]
 
 [dependencies]
 
-ruru = { git = "https://github.com/malept/ruru", branch = "windows-compatible" }
+ruru = "0.7"
