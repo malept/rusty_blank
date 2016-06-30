@@ -7,8 +7,10 @@ osx_image: xcode8
 rust:
 - stable
 env:
-  global:
-  - RUBY_VERSION: 2.3.0
+  matrix:
+  - RUBY_VERSION: 2.1.10
+  - RUBY_VERSION: 2.2.5
+  - RUBY_VERSION: 2.3.1
 
 cache:
 - bundler: true
@@ -16,7 +18,7 @@ cache:
 
 before_install:
 -  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use $RUBY_VERSION; else rvm install $RUBY_VERSION; fi
-- bundle install
+- bundle install --jobs=3 --retry=3 --path=${BUNDLE_PATH:-vendor/bundle}
 
 before_script:
 - |
@@ -30,8 +32,8 @@ before_script:
 script:
 - travis-cargo build
 - bundle exec rake test
-- gem build rusty_blank.gemspec
 - bundle exec rake thermite:tarball
+- bundle exec rake install
 
 deploy:
   provider: releases
