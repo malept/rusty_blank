@@ -27,6 +27,10 @@ before_script:
     python get-pip.py --user
   fi
   pip install 'travis-cargo<0.2' --user
+  if [[ "$TRAVIS_OS_NAME" == "osx" && "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
+    export CC=gcc
+  fi
+
 
 script:
 - travis-cargo build
