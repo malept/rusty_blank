@@ -16,7 +16,17 @@ cache:
 - cargo: true
 
 before_install:
--  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use $RBLANK_RUBY_VERSION; else rvm install $RBLANK_RUBY_VERSION; fi
+- |
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    if [[ "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
+      # reinstall 2.2.x built with clang
+      rvm reinstall "$RBLANK_RUBY_VERSION" --disable-binary
+    else
+      rvm use "$RBLANK_RUBY_VERSION"
+    fi
+  else
+    rvm install "$RBLANK_RUBY_VERSION"
+  fi
 - bundle install --jobs=3 --retry=3 --path=${BUNDLE_PATH:-vendor/bundle}
 
 before_script:
@@ -27,14 +37,6 @@ before_script:
     python get-pip.py --user
   fi
   pip install 'travis-cargo<0.2' --user
-  if [[ "$TRAVIS_OS_NAME" == "osx" && "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
-    mkdir -p "$HOME/.local/bin"
-    ln -s "$(brew --prefix gcc49)/bin/gcc-4.9" "$HOME/.local/bin/cc"
-    echo "$(which cc)"
-    ls -l "$(which cc)"
-    "$(which cc)" --version
-  fi
-
 
 script:
 - travis-cargo build
