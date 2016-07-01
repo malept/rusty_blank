@@ -28,7 +28,9 @@ before_script:
   fi
   pip install 'travis-cargo<0.2' --user
   if [[ "$TRAVIS_OS_NAME" == "osx" && "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
-    export CC=gcc
+    cc="$(which cc)"
+    sudo rm -f "$cc"
+    sudo ln -s `which gcc` "$cc"
   fi
 
 
