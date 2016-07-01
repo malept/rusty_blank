@@ -30,6 +30,8 @@ before_script:
   if [[ "$TRAVIS_OS_NAME" == "osx" && "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
     mkdir -p "$HOME/.local/bin"
     ln -s "$(which gcc)" "$HOME/.local/bin/cc"
+    echo "$(which cc)"
+    "$(which cc)" --version
   fi
 
 
