@@ -29,8 +29,9 @@ before_script:
   pip install 'travis-cargo<0.2' --user
   if [[ "$TRAVIS_OS_NAME" == "osx" && "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
     mkdir -p "$HOME/.local/bin"
-    ln -s "$(which gcc)" "$HOME/.local/bin/cc"
+    ln -s "$(brew --prefix gcc49)/bin/gcc-4.9" "$HOME/.local/bin/cc"
     echo "$(which cc)"
+    ls -l "$(which cc)"
     "$(which cc)" --version
   fi
 
