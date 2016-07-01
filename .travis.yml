@@ -21,12 +21,12 @@ before_install:
     if [[ "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
       # reinstall 2.2.x built with clang
       rvm reinstall "$RBLANK_RUBY_VERSION" --disable-binary
-    else
-      rvm use "$RBLANK_RUBY_VERSION"
     fi
   else
     rvm install "$RBLANK_RUBY_VERSION"
   fi
+  rvm use "$RBLANK_RUBY_VERSION"
+  ruby --version
 - bundle install --jobs=3 --retry=3 --path=${BUNDLE_PATH:-vendor/bundle}
 
 before_script:
