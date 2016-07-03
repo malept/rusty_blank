@@ -21,7 +21,7 @@ before_install:
     if [[ "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
       rvm use "$RBLANK_RUBY_VERSION"
       ruby -e 'require "pp"; pp RbConfig::CONFIG'
-      # reinstall 2.2.x built with clang
+      # reinstall 2.2.x built with shared libraries
       rvm reinstall "$RBLANK_RUBY_VERSION" --disable-binary
     fi
   else
