@@ -48,6 +48,7 @@ script:
 - bundle exec rake install
 - gem uninstall rusty_blank
 - CARGO=fake bundle exec rake install
+- gem list
 - ruby test/test_rusty_blank.rb
 
 deploy:
