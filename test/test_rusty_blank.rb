@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'fiddle'
 require 'minitest/autorun'
 
 #
@@ -20,6 +19,7 @@ class TestRustyBlank < MiniTest::Test
 
   def load_library
     if ARGV[0]
+      require 'fiddle'
       library = Fiddle.dlopen(ARGV[0])
       func = Fiddle::Function.new(library['init_rusty_blank'],
                                   [], Fiddle::TYPE_VOIDP)
