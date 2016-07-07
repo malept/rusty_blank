@@ -7,5 +7,6 @@ task default: %w(thermite:build)
 
 desc 'Run testsuite'
 task test: %w(thermite:build thermite:test) do
-  ruby "test.rb #{thermite.config.ruby_extension_path}"
+  ruby "test/test_rusty_blank.rb #{thermite.config.ruby_extension_path}"
+  ruby 'test/test_rusty_blank.rb'
 end

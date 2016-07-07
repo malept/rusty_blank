@@ -46,7 +46,9 @@ script:
 - bundle exec rake test
 - bundle exec rake thermite:tarball
 - bundle exec rake install
+- gem uninstall rusty_blank
 - CARGO=fake bundle exec rake install
+- ruby test/test_rusty_blank.rb
 
 deploy:
   provider: releases

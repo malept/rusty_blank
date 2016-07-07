@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.extensions    = %w(Rakefile)
   s.files         = `git ls-files`.split($OUTPUT_RECORD_SEPARATOR)
   s.require_paths = %w(lib)
-  s.test_files    = %w(test.rb)
+  s.test_files    = %w(test/test_rusty_blank.rb)
 
   s.add_runtime_dependency 'thermite', '~> 0'
   s.add_development_dependency 'minitest', '~> 5.8'

@@ -66,6 +66,7 @@ build_script:
 test_script:
   - bundle exec rake test
   - bundle exec rake install
+  - ruby test\test_rusty_blank.rb
 artifacts:
   - path: rusty_blank-*.tar.gz
 deploy:
