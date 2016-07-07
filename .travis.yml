@@ -48,7 +48,7 @@ script:
 - bundle exec rake install
 - gem uninstall rusty_blank
 - CARGO=fake bundle exec rake install
-- gem list
+- gem install minitest; CARGO=fake gem install pkg/*.gem
 - ruby test/test_rusty_blank.rb
 
 deploy:
