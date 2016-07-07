@@ -1,5 +1,4 @@
 require 'fiddle'
-require 'rbconfig'
 require 'thermite/config'
 
 toplevel_dir = File.dirname(File.dirname(__FILE__))
