@@ -67,6 +67,6 @@ deploy:
   file_glob: true
   skip_cleanup: true
   on:
-    condition: ${TRAVIS_TAG} =~ '-rust' && ${RBLANK_RUBY_VERSION} =~ '2.3.'
+    condition: ${TRAVIS_TAG} =~ '-rust'
     repo: malept/rusty_blank
     tags: true
