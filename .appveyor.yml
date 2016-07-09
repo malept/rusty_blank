@@ -27,7 +27,8 @@ install:
           $env:ARCH = "amd64";
           $env:bits ="64";
         }
-        $env:PATH = "C:\${env:RUBY_DIR}\bin;${env:PATH}";
+        $env:WIN_RUBY_BIN = "C:\${env:RUBY_DIR}\bin";
+        $env:PATH = "${env:WIN_RUBY_BIN};${env:PATH}";
         if ($env:BUILD_TARGET -eq 'gnu') {
           $env:PATH += ";C:\msys64\mingw${env:bits}\bin";
           gcc --version;
@@ -71,6 +72,7 @@ test_script:
           bundle exec rake install;
           gem uninstall rusty_blank;
           gem install minitest;
+          del "${env:WIN_RUBY_BIN}\rake"
           gem install "pkg\*.gem";
           ruby "test\test_rusty_blank.rb";
         }
