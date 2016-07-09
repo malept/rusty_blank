@@ -58,6 +58,7 @@ install:
   - cargo -vV
   - ruby --version
   - gem --version
+  - rake --version
   - bundle --version
   - bundle config --local path vendor/bundle
   - bundle install
