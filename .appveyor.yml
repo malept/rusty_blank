@@ -65,10 +65,14 @@ build_script:
   - bundle exec rake thermite:tarball
 test_script:
   - bundle exec rake test
-  - bundle exec rake install
-  - gem install minitest
-  - gem install pkg\*.gem
-  - ruby test\test_rusty_blank.rb
+  - ps: |
+    if ($env:RUST_TAG -ne "1") {
+      bundle exec rake install
+      gem uninstall rusty_blank
+      gem install minitest
+      gem install pkg\*.gem
+      ruby test\test_rusty_blank.rb
+    }
 artifacts:
   - path: rusty_blank-*.tar.gz
 deploy:

@@ -46,10 +46,16 @@ script:
 - bundle exec rake test
 - bundle exec rake thermite:tarball
 - bundle exec rake install
-- gem uninstall rusty_blank; CARGO=fake bundle exec rake install
 - |
   if [[ -z "$TRAVIS_TAG" ]]; then
-    gem uninstall rusty_blank; gem install minitest; CARGO=fake gem install pkg/*.gem
+    gem uninstall rusty_blank
+    CARGO=fake bundle exec rake install
+  fi
+- |
+  if [[ -z "$TRAVIS_TAG" ]]; then
+    gem uninstall rusty_blank
+    gem install minitest
+    CARGO=fake gem install pkg/*.gem
     ruby test/test_rusty_blank.rb
   fi
 
