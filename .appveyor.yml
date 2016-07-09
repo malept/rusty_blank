@@ -67,11 +67,11 @@ test_script:
   - bundle exec rake test
   - ps: |
     if ($env:RUST_TAG -ne "1") {
-      bundle exec rake install
-      gem uninstall rusty_blank
-      gem install minitest
-      gem install pkg\*.gem
-      ruby test\test_rusty_blank.rb
+      bundle exec rake install;
+      gem uninstall rusty_blank;
+      gem install minitest;
+      gem install pkg\*.gem;
+      ruby test\test_rusty_blank.rb;
     }
 artifacts:
   - path: rusty_blank-*.tar.gz
