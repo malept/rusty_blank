@@ -8,7 +8,7 @@ rust:
 - stable
 env:
   global:
-  - DEBUG_FILENAME: /tmp/thermite-debug.log
+  - THERMITE_DEBUG_FILENAME: /tmp/thermite-debug.log
   matrix:
   - RBLANK_RUBY_VERSION: 2.2.5
   - RBLANK_RUBY_VERSION: 2.3.1
@@ -60,7 +60,7 @@ script:
     CARGO=fake gem install pkg/*.gem
     ruby test/test_rusty_blank.rb
   fi
-- cat $DEBUG_FILENAME
+- cat $THERMITE_DEBUG_FILENAME
 
 deploy:
   provider: releases
