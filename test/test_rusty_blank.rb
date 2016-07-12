@@ -25,6 +25,7 @@ class TestRustyBlank < MiniTest::Test
                                   [], Fiddle::TYPE_VOIDP)
       func.call
     else
+      puts "Requiring rusty_blank on Ruby #{RbConfig::CONFIG['ruby_version']}"
       require 'rusty_blank'
     end
   end
