@@ -17,7 +17,14 @@ cache:
 
 before_install:
 - |
-  if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    if [[ "$RBLANK_RUBY_VERSION" =~ "2.2." ]]; then
+      rvm use "$RBLANK_RUBY_VERSION"
+      ruby -e 'require "pp"; pp RbConfig::CONFIG'
+      # reinstall 2.2.x built with shared libraries
+      rvm reinstall "$RBLANK_RUBY_VERSION" --disable-binary
+    fi
+  else
     rvm install "$RBLANK_RUBY_VERSION"
   fi
   rvm use "$RBLANK_RUBY_VERSION"
