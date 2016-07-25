@@ -69,7 +69,7 @@ test_script:
   - bundle exec rake test
   - ps: |
         if ($env:RUST_TAG -ne '1') {
-          bundle exec rake install;
+          bundle exec rake --trace install;
           gem uninstall rusty_blank;
           gem install minitest;
           del "${env:WIN_RUBY_BIN}\rake"
