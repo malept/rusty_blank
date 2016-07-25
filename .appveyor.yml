@@ -64,9 +64,9 @@ install:
   - bundle config --local path vendor/bundle
   - bundle install
 build_script:
-  - bundle exec rake thermite:tarball
+  - bundle exec rake --trace thermite:tarball
 test_script:
-  - bundle exec rake test
+  - bundle exec rake --trace test
   - ps: |
         if ($env:RUST_TAG -ne '1') {
           bundle exec rake --trace install;
