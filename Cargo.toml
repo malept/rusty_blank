@@ -20,4 +20,4 @@ crate-type = ["dylib"]
 
 [dependencies]
 
-ruru = "0.7"
+ruru = "0.8"

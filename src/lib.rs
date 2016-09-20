@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate ruru;
 
-use ruru::{Boolean, Class, RString};
+use ruru::{Boolean, Class, Object, RString};
 
 methods!(
     RString,
