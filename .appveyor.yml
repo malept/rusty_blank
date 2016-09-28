@@ -35,19 +35,11 @@ install:
         }
         if ($env:RUST_VERSION -eq 'stable') {
           echo "Downloading $channel channel manifest";
-          $manifest = "${env:Temp}\channel-rust-stable";
-          Start-FileDownload "https://static.rust-lang.org/dist/channel-rust-stable" -FileName "$manifest";
+          Start-FileDownload "https://static.rust-lang.org/dist/channel-rust-stable";
 
-          # Search the manifest lines for the correct filename based on expanded arch
-          $match = Get-Content "$manifest" | Select-String -pattern "${arch_expanded}.exe" -simplematch;
-          if (!$match -or !$match.line) {
-            throw "Could not find ${arch_expanded} in stable channel manifest";
-          }
-
-          $env:rust_installer = $match.line;
-        } else {
-          $env:rust_installer = "rust-${env:RUST_VERSION}-${arch_expanded}.exe";
+          $env:RUST_VERSION = Get-Content channel-rust-stable | Select -first 1 | %{$_.split('-')[1]}
         }
+        $env:rust_installer = "rust-${env:RUST_VERSION}-${arch_expanded}.exe";
         $tag_suffix = echo "${env:APPVEYOR_REPO_TAG_NAME}" | Select-String -pattern "-rust$"
         if ($tag_suffix) {
           $env:RUST_TAG = "1";
