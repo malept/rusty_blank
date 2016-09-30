@@ -9,6 +9,8 @@ speedup](https://github.com/SamSaffron/fast_blank), but to research and implemen
 distributing a Ruby + Rust extension that does not necessarily need a Rust compiler present in order
 to build the Ruby extension proper.
 
+## [Contributing](https://github.com/malept/rusty_blank/blob/master/CONTRIBUTING.md)
+
 ## Legal
 
 This repository is copyrighted under the MIT license, unless otherwise specified.

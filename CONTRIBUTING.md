@@ -1,0 +1,62 @@
+# Contributing to `rusty_blank`
+
+`rusty_blank` is a part of the Rust ecosystem. As such, all contributions to this project follow the
+[Rust language's code of conduct](https://www.rust-lang.org/conduct.html) where appropriate.
+
+This project is hosted at [GitHub](https://github.com/malept/rusty_blank). Both pull requests and
+issues of many different kinds are accepted.
+
+## Filing Issues
+
+Issues include bugs, questions, feedback, and feature requests. Before you file a new issue, please
+make sure that your issue has not already been filed by someone else.
+
+### Filing Bugs
+
+When filing a bug, please include the following information:
+
+* Operating system and version. If on Linux, please also include the distribution name.
+* System architecture. Examples include: x86-64, x86, and ARMv7.
+* Ruby version (by running `ruby -v`).
+* The version (and/or git revision) of `rusty_blank`.
+* If it's an error related to compiling the Rust code, the version of Rust, Cargo, and how you
+  installed it.
+* A detailed list of steps to reproduce the bug. A minimal testcase would be very helpful,
+  if possible.
+* If there are any error messages or a backtrace in the console, copying them in the bug summary
+  will be very helpful.
+
+## Filing Pull Requests
+
+Here are some things to keep in mind as you file a pull request to fix a bug, add a new feature,
+etc.:
+
+* Travis CI is used to make sure that the project installs and runs as expected.
+* Please ensure that your changes follow the Rubocop-enforced coding standard.
+* Please make sure your commits are rebased onto the latest commit in the master branch, and that
+  you limit/squash the number of commits created to a "feature"-level. For instance:
+
+bad:
+
+```
+commit 1: add foo
+commit 2: run rubocop
+commit 3: add test
+commit 4: add docs
+commit 5: add bar
+commit 6: add test + docs
+```
+
+good:
+
+```
+commit 1: add foo
+commit 2: add bar
+```
+
+Squashing commits during discussion of the pull request is almost always unnecessary, and makes it
+more difficult for both the submitters and reviewers to understand what changed in between comments.
+However, rebasing is encouraged when practical, particularly when there's a merge conflict.
+
+If you are continuing the work of another person's PR and need to rebase/squash, please retain the
+attribution of the original author(s) and continue the work in subsequent commits.
