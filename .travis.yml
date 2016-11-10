@@ -49,7 +49,7 @@ script:
     CARGO=fake gem install pkg/*.gem
     ruby test/test_rusty_blank.rb
   fi
-- cat $THERMITE_DEBUG_FILENAME
+- if [[ -f "$THERMITE_DEBUG_FILENAME" ]]; then cat $THERMITE_DEBUG_FILENAME; fi
 
 deploy:
   provider: releases
