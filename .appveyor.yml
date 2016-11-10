@@ -5,9 +5,6 @@ environment:
   matrix:
     - RUST_VERSION: stable
       BUILD_TARGET: gnu
-      RUBY_VERSION: 22
-    - RUST_VERSION: stable
-      BUILD_TARGET: gnu
       RUBY_VERSION: 23
 cache:
   - target\debug\build
