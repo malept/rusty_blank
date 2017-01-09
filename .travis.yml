@@ -25,6 +25,9 @@ before_install:
   rvm install "$RBLANK_RUBY_VERSION"
   rvm use "$RBLANK_RUBY_VERSION"
   ruby --version
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! which bundle > /dev/null; then
+    gem install bundler
+  fi
 - bundle install --jobs=3 --retry=3 --path=$TRAVIS_BUILD_DIR/vendor/bundle
 
 before_script:
