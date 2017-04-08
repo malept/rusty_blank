@@ -14,12 +14,24 @@ env:
   - RBLANK_RUBY_VERSION: 2.4.0
 matrix:
   include:
+  - os: linux
+    dist: trusty
+    env: RBLANK_RUBY_VERSION=2.3.3 RUBY_STATIC=1
+  - os: linux
+    dist: trusty
+    env: RBLANK_RUBY_VERSION=2.4.0 RUBY_STATIC=1
   - os: osx
     osx_image: xcode8
     env: RBLANK_RUBY_VERSION=2.3.3
   - os: osx
     osx_image: xcode8
+    env: RBLANK_RUBY_VERSION=2.3.3 RUBY_STATIC=1
+  - os: osx
+    osx_image: xcode8
     env: RBLANK_RUBY_VERSION=2.4.0
+  - os: osx
+    osx_image: xcode8
+    env: RBLANK_RUBY_VERSION=2.4.0 RUBY_STATIC=1
 
 cache:
   cargo: true

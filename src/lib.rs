@@ -12,8 +12,9 @@ methods!(
     }
 );
 
+#[allow(non_snake_case)]
 #[no_mangle]
-pub extern fn init_rusty_blank() {
+pub extern fn Init_rusty_blank() {
     Class::from_existing("String").define(|itself| {
         itself.def("blank?", string_is_blank);
     });
