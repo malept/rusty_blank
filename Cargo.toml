@@ -16,8 +16,8 @@ git_tag_regex = "^v(\\d+\\.\\d+\\.\\d+)-rust$"
 
 [lib]
 
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
 
 [dependencies]
 
-ruru = "0.9"
+ruru = { git = "https://github.com/malept/ruru", branch = "static_extensions" }

@@ -21,7 +21,7 @@ class TestRustyBlank < MiniTest::Test
     if ARGV[0]
       require 'fiddle'
       library = Fiddle.dlopen(ARGV[0])
-      func = Fiddle::Function.new(library['init_rusty_blank'],
+      func = Fiddle::Function.new(library['Init_rusty_blank'],
                                   [], Fiddle::TYPE_VOIDP)
       func.call
     else
