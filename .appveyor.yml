@@ -51,6 +51,7 @@ install:
   - rustc -vV
   - cargo -vV
   - ruby --version
+  - ruby -r pp -e "pp RbConfig::CONFIG"
   - gem --version
   - rake --version
   - bundle --version
