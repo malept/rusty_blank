@@ -6,6 +6,10 @@ environment:
     - RUST_VERSION: stable
       BUILD_TARGET: gnu
       RUBY_VERSION: 23
+    - RUST_VERSION: stable
+      BUILD_TARGET: gnu
+      RUBY_VERSION: 23
+      RUBY_STATIC: 1
 cache:
   - target\debug\build
   - target\debug\deps
