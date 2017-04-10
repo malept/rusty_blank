@@ -50,6 +50,7 @@ install:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
   - rustc -vV
   - cargo -vV
+  - gcc --version
   - ruby --version
   - ruby -r pp -e "pp RbConfig::CONFIG"
   - gem --version
