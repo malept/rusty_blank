@@ -37,7 +37,6 @@ cache:
   cargo: true
   directories:
   - $TRAVIS_BUILD_DIR/vendor/bundle
-  - $HOME/.cache/pip
 
 before_install:
 - |
@@ -49,17 +48,7 @@ before_install:
   fi
 - bundle install --jobs=3 --retry=3 --path=$TRAVIS_BUILD_DIR/vendor/bundle
 
-before_script:
-- |
-  export PATH=$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$PATH
-  if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! which pip > /dev/null; then
-    wget https://bootstrap.pypa.io/get-pip.py
-    python get-pip.py --user
-  fi
-  pip install 'travis-cargo<0.2' --user
-
 script:
-- travis-cargo build
 - bundle exec rake test
 - bundle exec rake thermite:tarball
 - bundle exec rake install
