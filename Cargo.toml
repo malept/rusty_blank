@@ -14,9 +14,13 @@ github_release_type = "latest"
 # git_tag_format = "v%s-rust"
 git_tag_regex = "^v(\\d+\\.\\d+\\.\\d+)-rust$"
 
-[lib]
+[target.'cfg(not(target_os = "macos"))'.lib]
 
 crate-type = ["cdylib"]
+
+[target.'cfg(target_os = "macos")'.lib]
+
+crate-type = ["staticlib"]
 
 [dependencies]
 
