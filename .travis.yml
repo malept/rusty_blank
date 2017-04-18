@@ -57,7 +57,7 @@ before_install:
 script:
 - bundle exec rake test
 - bundle exec rake thermite:tarball
-- bundle exec rake install
+- bundle exec rake install || gem install pkg/rusty_blank*.gem
 - |
   if [[ -z "$TRAVIS_TAG" ]]; then
     gem uninstall rusty_blank
