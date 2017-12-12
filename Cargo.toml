@@ -20,4 +20,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 
-ruru = { git = "https://github.com/malept/ruru", branch = "static_extensions" }
+ruru = "0.9"
+
+[replace]
+"ruby-sys:0.2.20" = { git = "http://github.com/malept/ruby-sys", branch = "test-osx-and-static-builds" }
