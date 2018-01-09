@@ -6,7 +6,6 @@ environment:
     - RUST_VERSION: stable
       BUILD_TARGET: gnu
       RUBY_VERSION: 23
-  matrix:
     - RUST_VERSION: stable
       BUILD_TARGET: gnu
       RUBY_VERSION: 24
