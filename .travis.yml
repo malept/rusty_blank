@@ -1,11 +1,11 @@
-sudo: false
+sudo: required
 language: rust
 os:
-- linux
 - osx
-dist: trusty
 osx_image: xcode9.2
 rust: stable
+services:
+- docker
 env:
   global:
   - THERMITE_DEBUG_FILENAME: /tmp/thermite-debug.log
@@ -17,13 +17,28 @@ matrix:
   include:
   - os: linux
     dist: trusty
-    env: RBLANK_RUBY_VERSION=2.3.5 RUBY_STATIC=1
+    language: generic
+    env: DOCKER_TAG=ruby2.3
   - os: linux
     dist: trusty
-    env: RBLANK_RUBY_VERSION=2.4.2 RUBY_STATIC=1
+    language: generic
+    env: DOCKER_TAG=ruby2.3-shared
   - os: linux
     dist: trusty
-    env: RBLANK_RUBY_VERSION=2.5.0 RUBY_STATIC=1
+    language: generic
+    env: DOCKER_TAG=ruby2.4
+  - os: linux
+    dist: trusty
+    language: generic
+    env: DOCKER_TAG=ruby2.4-shared
+  - os: linux
+    dist: trusty
+    language: generic
+    env: DOCKER_TAG=latest
+  - os: linux
+    dist: trusty
+    language: generic
+    env: DOCKER_TAG=latest-shared
   - os: osx
     osx_image: xcode8
     env: RBLANK_RUBY_VERSION=2.3.5
@@ -75,36 +90,8 @@ cache:
   directories:
   - $TRAVIS_BUILD_DIR/vendor/bundle
 
-before_install:
-- |
-  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-    brew update
-  fi
-  rvm install "$RBLANK_RUBY_VERSION"
-  rvm use "$RBLANK_RUBY_VERSION"
-  ruby --version
-  if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! which bundle > /dev/null; then
-    gem install bundler
-  fi
-- bundle install --jobs=3 --retry=3 --path=$TRAVIS_BUILD_DIR/vendor/bundle
-
-script:
-- bundle exec rake test
-- bundle exec rake thermite:tarball
-- bundle exec rake install
-- |
-  if [[ -z "$TRAVIS_TAG" ]]; then
-    gem uninstall rusty_blank
-    CARGO=fake bundle exec rake install
-  fi
-- |
-  if [[ -z "$TRAVIS_TAG" ]]; then
-    gem uninstall rusty_blank
-    gem install minitest
-    CARGO=fake gem install pkg/*.gem
-    ruby test/test_rusty_blank.rb
-  fi
-- if [[ -f "$THERMITE_DEBUG_FILENAME" ]]; then cat $THERMITE_DEBUG_FILENAME; fi
+before_install: test/ci/before_install.sh
+script: test/ci/script.sh
 
 deploy:
   provider: releases
