@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    brew update
     rvm install "$RBLANK_RUBY_VERSION"
     rvm use "$RBLANK_RUBY_VERSION"
 fi
