@@ -1,5 +1,6 @@
 #/bin/bash
 
+export PATH=$HOME/.cargo/bin:$PATH
 cd /code
 
 TRAVIS_BUILD_DIR=/code test/ci/before_install.sh
