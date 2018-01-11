@@ -1,4 +1,4 @@
-#/bin/bash
+#/bin/bash -e
 
 export PATH=$HOME/.cargo/bin:$PATH
 cd /code

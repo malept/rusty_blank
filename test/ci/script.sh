@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
     sudo docker run --interactive --tty --volume $(pwd):/code malept/rust-ruby-container:$DOCKER_TAG bash /code/test/ci/docker.sh
