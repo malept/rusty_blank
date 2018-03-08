@@ -59,6 +59,9 @@ cache:
 
 before_install:
 - |
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    brew update
+  fi
   rvm install "$RBLANK_RUBY_VERSION"
   rvm use "$RBLANK_RUBY_VERSION"
   ruby --version
