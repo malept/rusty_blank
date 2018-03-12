@@ -40,14 +40,8 @@ matrix:
     language: generic
     env: DOCKER_TAG=latest-shared
   - os: osx
-    osx_image: xcode8
-    env: RBLANK_RUBY_VERSION=2.3.5
-  - os: osx
     osx_image: xcode9.3beta
     env: RBLANK_RUBY_VERSION=2.3.5
-  - os: osx
-    osx_image: xcode8
-    env: RBLANK_RUBY_VERSION=2.3.5 RUBY_STATIC=1
   - os: osx
     osx_image: xcode9.2
     env: RBLANK_RUBY_VERSION=2.3.5 RUBY_STATIC=1
@@ -55,14 +49,8 @@ matrix:
     osx_image: xcode9.3beta
     env: RBLANK_RUBY_VERSION=2.3.5 RUBY_STATIC=1
   - os: osx
-    osx_image: xcode8
-    env: RBLANK_RUBY_VERSION=2.4.2
-  - os: osx
     osx_image: xcode9.3beta
     env: RBLANK_RUBY_VERSION=2.4.2
-  - os: osx
-    osx_image: xcode8
-    env: RBLANK_RUBY_VERSION=2.4.2 RUBY_STATIC=1
   - os: osx
     osx_image: xcode9.2
     env: RBLANK_RUBY_VERSION=2.4.2 RUBY_STATIC=1
@@ -70,14 +58,8 @@ matrix:
     osx_image: xcode9.3beta
     env: RBLANK_RUBY_VERSION=2.4.2 RUBY_STATIC=1
   - os: osx
-    osx_image: xcode8
-    env: RBLANK_RUBY_VERSION=2.5.0
-  - os: osx
     osx_image: xcode9.3beta
     env: RBLANK_RUBY_VERSION=2.5.0
-  - os: osx
-    osx_image: xcode8
-    env: RBLANK_RUBY_VERSION=2.5.0 RUBY_STATIC=1
   - os: osx
     osx_image: xcode9.2
     env: RBLANK_RUBY_VERSION=2.5.0 RUBY_STATIC=1
