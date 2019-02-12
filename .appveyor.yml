@@ -5,13 +5,13 @@ environment:
   matrix:
     - RUST_VERSION: stable
       BUILD_TARGET: gnu
-      RUBY_VERSION: 23
-    - RUST_VERSION: stable
-      BUILD_TARGET: gnu
       RUBY_VERSION: 24
     - RUST_VERSION: stable
       BUILD_TARGET: gnu
       RUBY_VERSION: 25
+    - RUST_VERSION: stable
+      BUILD_TARGET: gnu
+      RUBY_VERSION: 26
 cache:
   - target\debug\build
   - target\debug\deps
