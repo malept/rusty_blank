@@ -15,6 +15,7 @@ env:
 # macOS:
 # * xcode9.2: 10.12
 # * xcode10.1: 10.13
+# * xcode10.2: 10.14
 matrix:
   include:
   - os: linux
@@ -30,13 +31,22 @@ matrix:
     osx_image: xcode10.1
     env: RBLANK_RUBY_VERSION=2.6.1
   - os: osx
+    osx_image: xcode10.2
+    env: RBLANK_RUBY_VERSION=2.6.1
+  - os: osx
     osx_image: xcode9.2
     env: RBLANK_RUBY_VERSION=2.6.1 RUBY_STATIC=1
   - os: osx
     osx_image: xcode10.1
     env: RBLANK_RUBY_VERSION=2.6.1 RUBY_STATIC=1
   - os: osx
+    osx_image: xcode10.2
+    env: RBLANK_RUBY_VERSION=2.6.1 RUBY_STATIC=1
+  - os: osx
     osx_image: xcode10.1
+    env: RBLANK_RUBY_VERSION=2.4.2
+  - os: osx
+    osx_image: xcode10.2
     env: RBLANK_RUBY_VERSION=2.4.2
   - os: osx
     osx_image: xcode9.2
@@ -48,10 +58,16 @@ matrix:
     osx_image: xcode10.1
     env: RBLANK_RUBY_VERSION=2.5.0
   - os: osx
+    osx_image: xcode10.2
+    env: RBLANK_RUBY_VERSION=2.5.0
+  - os: osx
     osx_image: xcode9.2
     env: RBLANK_RUBY_VERSION=2.5.0 RUBY_STATIC=1
   - os: osx
     osx_image: xcode10.1
+    env: RBLANK_RUBY_VERSION=2.5.0 RUBY_STATIC=1
+  - os: osx
+    osx_image: xcode10.2
     env: RBLANK_RUBY_VERSION=2.5.0 RUBY_STATIC=1
 
 cache:
